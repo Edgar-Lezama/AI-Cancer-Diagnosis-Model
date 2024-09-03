@@ -197,3 +197,12 @@ When training the model, it will iterate over the entire training dataset 1,000 
 
 # Potential Issues
 
+`File Not Found:` Be sure that the 'cancer.csv' file exists for this project.
+
+`Shape Mismatch Error:` If the number of input features does not match the 'input_shape', you will get a 'ValueError'.
+
+`Overfitting:` Training the model with too many epochs without proper regularization might lead to overfitting. This is where the model preforms well on training data but poorly on unsen data. 
+
+`Memory Issues:` Training with large datasets or too many epochs could lead to memory errors, especially if the system lacks sufficient resources.
+
+`Invalid Labels:` If 'y' contains values other than 0 and 1, using 'binary_crossentropy' could cause errors or lead to incorrect model behavior.
