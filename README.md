@@ -1,6 +1,6 @@
 # Background
 
-This is my first time making a neural network model. This model is designed to preform binary classification. The data set used in this code is filled with breast cancer tumor sizes and characteristics and each record states if that specific tumor is either malignant(1) or benign(0). This is the column that shows that result.
+This is my first time making a neural network model. This model is designed to preform binary classification. I did my best to explain what I could. I am still googling things I am not quite familiar with. I will clarify what information needs more googling. The data set used in this code is filled with breast cancer tumor sizes and characteristics and each record states if that specific tumor is either malignant(1) or benign(0). This is the column that shows that result.
 
 <details>
   <summary> Output Example</summary>
@@ -152,3 +152,48 @@ Each neuron's output is calculated as the weighted sum of its inputs plus a bias
 </details>
 
 #### Second Hidden Layer
+
+The second hidden layer is similar to the first hidden layer, the only difference is that the output from the first hidden layer, will be the input for the second hidden layer.
+
+#### Output Layer
+
+<details>
+  <summary>Example Code</summary>
+
+  Model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
+  
+</details>
+
+This output layer follows the same arithmetic as the other layers; however, this layer only has 1 neuron. The reason there is only 1 neuron is due to the fact that this model is used for binary classification tasks.
+
+### Compile the Model
+
+<details>
+  
+  <summary> Example Code</summary>
+
+  model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+  
+</details>
+
+This code specifies that the optimizer used is called Adam (Adaptive Moment Estimation). This is a popular optimizer that combines the advantages of two other extensions of stochastic gradient descent: AdaGrad and RMSProp. It is widely used because it adapts the learning rate based on the moving averages of the gradient and squared gradient. `(This needs more googling)`
+
+The Loss function used for training is Binary crossentropy. This measures the difference between the predicted probability and the actual label.
+
+The last section of this code specifies the metrics to evaluate the model during training and testing. I have it set to accuracy, this measures the proportion of correct predictions.
+
+### Train and Evaluate the Model
+
+<details>
+  <summary> Example Code</summary>
+
+  model.fit(x_train, y_train, epochs=1000)
+
+  model.evaluate(x_test, y_test)
+  
+</details>
+
+When training the model, it will iterate over the entire training dataset 1,000 times. More epochs usually allow the model to learn better but can also lead to overfitting if too many epochs are used. Then, when evaluating the model, it returns the loss value and metric value(s) (in this case, accuracy) for the model on the testing data.
+
+# Potential Issues
+
